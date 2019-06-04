@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "612648198188",
+    "firebase_url": "https://stylyaga-app.firebaseio.com",
+    "project_id": "stylyaga-app",
+    "storage_bucket": "stylyaga-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612648198188:android:f3f3c171ec81c4ea",
+        "android_client_info": {
+          "package_name": "com.example.stylyaga"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "612648198188-00ipb039lrmvlvc8a2ehtqsdu09cunpt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.stylyaga",
+            "certificate_hash": "bd5f1d701927511069f26e0809c3396bd072d287"
+          }
+        },
+        {
+          "client_id": "612648198188-8a9fb743ks5buo5v3sn54tvtntmgkvv2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlNuesU_9N3hFebNgHLY85xZGE4zWhrv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "612648198188-8a9fb743ks5buo5v3sn54tvtntmgkvv2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
