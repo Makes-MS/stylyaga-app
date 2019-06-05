@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,11 +32,9 @@ public class JoinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
 
-        FirebaseApp.initializeApp(this);
-
-        InputLogin = (EditText) findViewById(R.id.input_login);
-        InputPassword = (EditText) findViewById(R.id.input_password);
-        JoinButton = (Button) findViewById(R.id.button_join);
+        InputLogin = (EditText) findViewById(R.id.input_login_ja);
+        InputPassword = (EditText) findViewById(R.id.input_password_ja);
+        JoinButton = (Button) findViewById(R.id.join_button_ja);
         LoadingBar = new ProgressDialog(this);
 
         JoinButton.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +69,9 @@ public class JoinActivity extends AppCompatActivity {
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 if (!(dataSnapshot.child("Users").child(Login).exists())){
+
                     HashMap<String, Object> userDataMap = new HashMap<>();
                     userDataMap.put("Login", Login);
                     userDataMap.put("Password", Password);
@@ -85,7 +84,7 @@ public class JoinActivity extends AppCompatActivity {
                                 Toast.makeText(JoinActivity.this, "Вітаємо!", Toast.LENGTH_SHORT).show();
                                 LoadingBar.dismiss();
 
-                                Intent join = new Intent(JoinActivity.this, LoginActivity.class);
+                                Intent join = new Intent(JoinActivity.this, WelcomeActivity.class);
                                 startActivity(join);
                             } else {
                                 LoadingBar.dismiss();

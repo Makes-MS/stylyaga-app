@@ -7,20 +7,20 @@
     tools:context=".JoinActivity">
 
     <EditText
-        android:id="@+id/input_login"
+        android:id="@+id/input_login_ja"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:hint="Login"/>
 
     <EditText
-        android:id="@+id/input_password"
+        android:id="@+id/input_password_ja"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:hint="Password"
         android:layout_marginTop="50dp"/>
 
     <Button
-        android:id="@+id/button_join"
+        android:id="@+id/join_button_ja"
         android:layout_width="150dp"
         android:layout_height="120dp"
         android:layout_marginTop="100dp"/>

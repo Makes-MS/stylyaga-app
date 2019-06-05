@@ -10,7 +10,6 @@ import android.widget.Button;
 public class WelcomeActivity extends AppCompatActivity {
 
     private Button JoinButton, LoginButton;
-    private ProgressDialog LoadingBar;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -19,7 +18,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
         JoinButton = (Button)findViewById(R.id.join_button);
         LoginButton = (Button) findViewById(R.id.login_button);
-        LoadingBar = new ProgressDialog(this);
 
         JoinButton.setOnClickListener(new View.OnClickListener() {
             @Override

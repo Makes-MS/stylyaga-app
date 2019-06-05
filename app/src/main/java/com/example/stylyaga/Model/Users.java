@@ -1,13 +1,19 @@
 package com.example.stylyaga.Model;
 
-public class Users {
-
+public class Users
+{
     private String Login, Password;
+
+    public Users()
+    {
+
+    }
 
     public Users(String Login, String Password) {
         this.Login = Login;
         this.Password = Password;
     }
+
 
     public String getLogin() {
         return Login;

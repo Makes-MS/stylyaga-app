@@ -7,19 +7,19 @@
     tools:context=".LoginActivity">
 
     <EditText
-        android:id="@+id/input_login"
+        android:id="@+id/input_login_la"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:hint="Login"/>
 
     <EditText
-        android:id="@+id/input_password"
+        android:id="@+id/input_password_la"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:hint="Password"/>
 
     <Button
-        android:id="@+id/button_login"
+        android:id="@+id/login_button_la"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="Login"/>

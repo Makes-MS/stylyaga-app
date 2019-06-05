@@ -33,9 +33,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        InputLogin = (EditText) findViewById(R.id.input_login);
-        InputPassword = (EditText) findViewById(R.id.input_password);
-        LoginButton = (Button) findViewById(R.id.button_login);
+        InputLogin = (EditText) findViewById(R.id.input_login_la);
+        InputPassword = (EditText) findViewById(R.id.input_password_la);
+        LoginButton = (Button) findViewById(R.id.login_button_la);
         LoadingBar = new ProgressDialog(this);
 
         Paper.init(this);
@@ -76,13 +76,15 @@ public class LoginActivity extends AppCompatActivity {
                     Users usersData = dataSnapshot.child(parentDbName).child(Login).getValue(Users.class);
                     if (usersData.getLogin().equals(Login)){
                         if (usersData.getPassword().equals(Password)){
-                            if (parentDbName.equals("Users")){
+                            if (parentDbName.equals(parentDbName)){
                                 Toast.makeText(LoginActivity.this, "Авторизація успішно виконана!", Toast.LENGTH_SHORT).show();
                                 LoadingBar.dismiss();
 
-                                Intent login = new Intent(LoginActivity.this, HomeActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 Prevalent.currentOnlineUser = usersData;
-                                startActivity(login);
+                                startActivity(intent);
+                                Toast.makeText(LoginActivity.this, "123", Toast.LENGTH_SHORT).show();
+
                             } else {
                                 LoadingBar.dismiss();
                                 Toast.makeText(LoginActivity.this, "Пароль не вірний!", Toast.LENGTH_SHORT).show();
@@ -90,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 } else {
-                    Toast.makeText(LoginActivity.this, "Acount with this " + Login + " login do not exist.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Account with this " + Login + " login do not exist.", Toast.LENGTH_SHORT).show();
                     LoadingBar.dismiss();
                 }
             }
