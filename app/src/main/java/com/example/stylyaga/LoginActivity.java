@@ -33,9 +33,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        InputLogin = (EditText) findViewById(R.id.input_login_la);
-        InputPassword = (EditText) findViewById(R.id.input_password_la);
-        LoginButton = (Button) findViewById(R.id.login_button_la);
+        InputLogin = (EditText) findViewById(R.id.input_login);
+        InputPassword = (EditText) findViewById(R.id.input_password);
+        LoginButton = (Button) findViewById(R.id.login_button);
         LoadingBar = new ProgressDialog(this);
 
         Paper.init(this);

@@ -32,9 +32,9 @@ public class JoinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
 
-        InputLogin = (EditText) findViewById(R.id.input_login_ja);
-        InputPassword = (EditText) findViewById(R.id.input_password_ja);
-        JoinButton = (Button) findViewById(R.id.join_button_ja);
+        InputLogin = (EditText) findViewById(R.id.input_login);
+        InputPassword = (EditText) findViewById(R.id.input_password);
+        JoinButton = (Button) findViewById(R.id.join_button);
         LoadingBar = new ProgressDialog(this);
 
         JoinButton.setOnClickListener(new View.OnClickListener() {

@@ -14,7 +14,6 @@ public class Users
         this.Password = Password;
     }
 
-
     public String getLogin() {
         return Login;
     }
