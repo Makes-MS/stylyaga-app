@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -23,10 +24,11 @@ import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText InputLogin, InputPassword;
+    public EditText InputLogin, InputPassword;
     private Button LoginButton;
     private ProgressDialog LoadingBar;
     private String parentDbName = "Users";
+    private CheckBox CheckRememberMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         InputPassword = (EditText) findViewById(R.id.input_password);
         LoginButton = (Button) findViewById(R.id.login_button);
         LoadingBar = new ProgressDialog(this);
+        CheckRememberMe = (CheckBox) findViewById(R.id.remember_me);
 
         Paper.init(this);
 
@@ -67,6 +70,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void AllowAssetsToAccount(final String Login, final String Password){
+        if (CheckRememberMe.isChecked()){
+            Paper.book().write(Prevalent.UserLoginKey, Login);
+            Paper.book().write(Prevalent.UserPasswordKey, Password);
+        }
+
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -82,8 +90,8 @@ public class LoginActivity extends AppCompatActivity {
 
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 Prevalent.currentOnlineUser = usersData;
-                                startActivity(intent);
                                 Toast.makeText(LoginActivity.this, "123", Toast.LENGTH_SHORT).show();
+                                startActivity(intent);
 
                             } else {
                                 LoadingBar.dismiss();

@@ -20,10 +20,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.jar.Attributes;
 
 public class JoinActivity extends AppCompatActivity {
 
-    private EditText InputLogin, InputPassword;
+    private EditText InputName, InputLogin, InputPassword;
     private Button JoinButton;
     private ProgressDialog LoadingBar;
 
@@ -32,6 +33,7 @@ public class JoinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
 
+        InputName = (EditText) findViewById(R.id.input_name);
         InputLogin = (EditText) findViewById(R.id.input_login);
         InputPassword = (EditText) findViewById(R.id.input_password);
         JoinButton = (Button) findViewById(R.id.join_button);
@@ -46,6 +48,7 @@ public class JoinActivity extends AppCompatActivity {
     }
 
     private void CreateAccount() {
+        String Name = InputName.getText().toString();
         String Login = InputLogin.getText().toString();
         String Password = InputPassword.getText().toString();
 
@@ -59,11 +62,11 @@ public class JoinActivity extends AppCompatActivity {
             LoadingBar.setCanceledOnTouchOutside(false);
             LoadingBar.show();
 
-            ValidateData(Login, Password);
+            ValidateData(Name, Login, Password);
         }
     }
 
-    private void ValidateData(final String Login, final String Password) {
+    private void ValidateData(final String Name, final String Login, final String Password) {
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -73,6 +76,7 @@ public class JoinActivity extends AppCompatActivity {
                 if (!(dataSnapshot.child("Users").child(Login).exists())){
 
                     HashMap<String, Object> userDataMap = new HashMap<>();
+                    userDataMap.put("Name", Name);
                     userDataMap.put("Login", Login);
                     userDataMap.put("Password", Password);
 

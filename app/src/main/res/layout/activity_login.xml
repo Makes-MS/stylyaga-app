@@ -32,11 +32,20 @@
         android:layout_centerHorizontal="true"
         android:hint="Password"/>
 
+    <CheckBox
+        android:id="@+id/remember_me"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remember me"
+        android:textSize="15sp"
+        android:layout_below="@+id/input_password"
+        android:layout_centerHorizontal="true"/>
+
     <Button
         android:id="@+id/login_button"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/input_password"
+        android:layout_below="@+id/remember_me"
         android:layout_centerHorizontal="true"
         android:text="Login"/>
 
