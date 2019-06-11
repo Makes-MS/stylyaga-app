@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.stylyaga.Model.Users;
@@ -24,11 +25,13 @@ import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
 
-    public EditText InputLogin, InputPassword;
+    private EditText InputLogin, InputPassword;
     private Button LoginButton;
     private ProgressDialog LoadingBar;
-    private String parentDbName = "Users";
+    private TextView AdminLink, UserLink;
     private CheckBox CheckRememberMe;
+
+    private String parentDbName = "Users";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,12 @@ public class LoginActivity extends AppCompatActivity {
 
         InputLogin = (EditText) findViewById(R.id.input_login);
         InputPassword = (EditText) findViewById(R.id.input_password);
+
         LoginButton = (Button) findViewById(R.id.login_button);
+
+        AdminLink = (TextView) findViewById(R.id.admin_link);
+        UserLink = (TextView) findViewById(R.id.user_link);
+
         LoadingBar = new ProgressDialog(this);
         CheckRememberMe = (CheckBox) findViewById(R.id.remember_me);
 
@@ -47,6 +55,26 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 LoginUser();
+            }
+        });
+
+        AdminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginButton.setText("Login Admin");
+                AdminLink.setVisibility(View.INVISIBLE);
+                UserLink.setVisibility(View.VISIBLE);
+                parentDbName = "Admins";
+            }
+        });
+
+        UserLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginButton.setText("Login User");
+                UserLink.setVisibility(View.INVISIBLE);
+                AdminLink.setVisibility(View.VISIBLE);
+                parentDbName = "Users";
             }
         });
     }
@@ -85,14 +113,21 @@ public class LoginActivity extends AppCompatActivity {
                     if (usersData.getLogin().equals(Login)){
                         if (usersData.getPassword().equals(Password)){
                             if (parentDbName.equals(parentDbName)){
-                                Toast.makeText(LoginActivity.this, "Авторизація успішно виконана!", Toast.LENGTH_SHORT).show();
-                                LoadingBar.dismiss();
+                                if (parentDbName.equals("Admins")){
+                                    Toast.makeText(LoginActivity.this, "Авторизація адміністратора успішно виконана!", Toast.LENGTH_SHORT).show();
+                                    LoadingBar.dismiss();
 
-                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                                Prevalent.currentOnlineUser = usersData;
-                                Toast.makeText(LoginActivity.this, "123", Toast.LENGTH_SHORT).show();
-                                startActivity(intent);
+                                    Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
+                                    Prevalent.currentOnlineUser = usersData;
+                                    startActivity(intent);
+                                } else if (parentDbName.equals("Users")){
+                                    Toast.makeText(LoginActivity.this, "Авторизація успішно виконана!", Toast.LENGTH_SHORT).show();
+                                    LoadingBar.dismiss();
 
+                                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                    Prevalent.currentOnlineUser = usersData;
+                                    startActivity(intent);
+                                }
                             } else {
                                 LoadingBar.dismiss();
                                 Toast.makeText(LoginActivity.this, "Пароль не вірний!", Toast.LENGTH_SHORT).show();

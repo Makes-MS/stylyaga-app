@@ -26,6 +26,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.google.firebase:firebase-core:16.0.9'
     implementation 'com.google.firebase:firebase-database:17.0.0'
+    implementation 'com.google.firebase:firebase-storage:17.0.0'
     implementation 'com.firebaseui:firebase-ui-database:5.0.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'io.paperdb:paperdb:2.6'

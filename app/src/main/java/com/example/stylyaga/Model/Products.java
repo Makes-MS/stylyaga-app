@@ -7,17 +7,17 @@ public class Products {
 
     }
 
-    public Products(String pname, String description, String image) {
+    public Products(String name, String description, String image) {
         this.name = name;
         this.description = description;
         this.image = image;
     }
 
-    public String getPname() {
+    public String getName() {
         return name;
     }
 
-    public void setPname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 

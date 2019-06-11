@@ -49,4 +49,27 @@
         android:layout_centerHorizontal="true"
         android:text="Login"/>
 
+    <TextView
+        android:id="@+id/admin_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I`m am Admin?"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/login_button"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"/>
+
+    <TextView
+        android:id="@+id/user_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I`m not Admin"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/login_button"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp"
+        android:visibility="invisible"/>
+
 </RelativeLayout>

@@ -36,6 +36,7 @@ public class JoinActivity extends AppCompatActivity {
         InputName = (EditText) findViewById(R.id.input_name);
         InputLogin = (EditText) findViewById(R.id.input_login);
         InputPassword = (EditText) findViewById(R.id.input_password);
+
         JoinButton = (Button) findViewById(R.id.join_button);
         LoadingBar = new ProgressDialog(this);
 
